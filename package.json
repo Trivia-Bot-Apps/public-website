@@ -1,0 +1,45 @@
+{
+  "name": "trivia-bot-dashboard",
+  "version": "0.1.0",
+  "description": "Dashboard for Trivia Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trivia-Bot-Discord/website.git"
+  },
+  "keywords": [
+    "dashboard",
+    "trivia"
+  ],
+  "author": "Trivia Bot Discord",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/Trivia-Bot-Discord/website/issues"
+  },
+  "homepage": "https://github.com/Trivia-Bot-Discord/website#readme",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "bufferutil": "^4.0.2",
+    "connect-redis": "^5.0.0",
+    "dddos": "^0.1.2",
+    "discord.js-light": "^3.3.5",
+    "erlpack": "github:discord/erlpack",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "node-fetch": "^2.6.1",
+    "redis": "^3.0.2",
+    "utf-8-validate": "^5.0.3",
+    "zlib-sync": "^0.1.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
+  }
+}
