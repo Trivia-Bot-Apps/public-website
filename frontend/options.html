@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Trivia Bot</title>
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/dashboard.compiled.css">
+    <link rel="stylesheet" href="/assets/css/features.css">
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+    <link rel="stylesheet" href="/assets/css/leaderboard.compiled.css">
+    <link rel="stylesheet" href="/assets/css/settings.compiled.css">
+    <link rel="stylesheet" href="/assets/css/styling.compiled.css">
+    <style>
+    .loader {
+    display: block;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 1rem;
+    height: 1rem;
+    background-color: #f53d83;
+    border-radius: 50%;
+    animation: pulse 1s ease-in-out infinite alternate, brightness 50s linear infinite alternate;
+    }
+    #loader-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    top: 0;
+    left: 0;
+    z-index: 3000;
+    }
+    .loader::after {
+    content: '';
+    display: block;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: 2rem;
+    top: -0.5rem;
+    background-color: #f53d83;
+    border-radius: 50%;
+    animation: pulse 1s ease-in-out infinite alternate, brightness 1s linear infinite alternate;
+    }
+    .loader::before {
+    content: '';
+    display: block;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    left: -1rem;
+    top: 0.5rem;
+    background-color: #f53d83;
+    border-radius: 50%;
+    animation-delay: 0.2s;
+    transform: translate(-50%, -50%); 
+    animation: pulse 1s ease-in-out infinite alternate, brightness 3s linear infinite alternate;
+    }
+
+    @keyframes pulse {
+    from {
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    }
+    @keyframes brightness {
+    from {
+        filter: brightness(1)
+    }
+    to {
+        filter: brightness(1.75)
+    }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="loader-container"><div class="loader"></div></div>
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg navbar-shrink fixed-top" id="mainNav" data-shrink="disable">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="/"><img id="navbar-img" src="/assets/img/Trivia.png">Trivia Bot</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/">About</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/leaderboard">Global Leaderboard</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active" href="/dashboard">Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2 id="dashboard-header" class="page-header"></h2>
+    <div id="settings-form">
+        <div class="row">
+            <div class="col-lg-6 d-flex d-lg-flex flex-row flex-lg-column justify-content-lg-center align-items-lg-center" style="padding: 30px;"><label for="prefix-input" style="width: 91px;">Bot Prefix</label><input type="text" maxlength="7" id="prefix-input" style="width: 80%;"></div>
+            <div class="col-lg-6 d-flex d-lg-flex flex-row flex-sm-row flex-md-row flex-lg-column justify-content-lg-center align-items-lg-center"
+                style="padding: 30px;"><label for="lang-choice" style="width: 171px;">Server Language</label><select id="lang-choice" class="custom-select custom-select-sm mb-3 form-select">
+                    <option value="en" selected>English (US)</option>
+                    <option value="es">Spanish</option>
+                    <option value="zh-CN">Chinese</option>
+                    <option value="fr">French</option>
+                    <option value="ru">Russian</option>
+                  </select>
+            </div>
+            <div class="col d-flex d-lg-flex flex-column justify-content-lg-center align-items-lg-center" style="padding: 50px;" id="save-col"><button class="btn btn-dropdown" id="save-btn" type="button">Save</button><span id="success-msg"></span></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        guildId = window.location.pathname.split('/')[3]
+        async function optionsInit() {
+            data = await fetch(`/api/discord/guild/${guildId}/options`)
+            data = await data.json()
+            document.getElementById('lang-choice').value = data.lang
+            document.getElementById('prefix-input').value = data.prefix
+            document.getElementById('dashboard-header').innerHTML = `Settings for: ${data.name}`
+            document.getElementById('save-btn').addEventListener('click', async () => {
+                document.getElementById('success-msg').innerHTML = '<div style="margin-top: 5px; font-family: \'Cabin\'"class="alert alert-success alert-dismissible fade show" role="alert"> <strong>Success!</strong> Your settings were saved successfully <button type="button" style="outline:0" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>'
+                const request = await fetch(`/api/discord/guild/${guildId}/options`,
+                    {
+                        method: 'POST',
+                        body: JSON.stringify({prefix: document.getElementById('prefix-input').value, lang: document.getElementById('lang-choice').value}),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                );
+            });
+            document.getElementById('loader-container').style.display = 'none'
+        }
+        optionsInit()
+    </script>
+</body>
+
+</html>

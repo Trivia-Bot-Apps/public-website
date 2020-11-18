@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Trivia Bot</title>
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/img/Trivia.png">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/dashboard.compiled.css">
+    <link rel="stylesheet" href="/assets/css/features.css">
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+    <link rel="stylesheet" href="/assets/css/leaderboard.compiled.css">
+    <link rel="stylesheet" href="/assets/css/styling.compiled.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg navbar-shrink fixed-top" id="mainNav" data-shrink="disable">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="/"><img id="navbar-img" src="/assets/img/Trivia.png">Trivia Bot</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/">About</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/leaderboard">Global Leaderboard</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active" href="/dashboard">Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2 id="dashboard-header" class="page-header">select a server</h2>
+    <div id="guild-list"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        const inviteCallback = encodeURIComponent('https://triviabot.tech/api/botinvitecallback')
+        function htmlToElement(html) {
+            var template = document.createElement('template');
+            html = html.trim();
+            template.innerHTML = html;
+            return template.content.firstChild;
+        }
+        async function makeGuilds() {
+            try {
+                data = await fetch('/api/discord/guilds')
+            } catch(err) {
+                window.location = "/login"
+            }
+            data = await data.json();
+            data.forEach((item) => {
+                if (item.can_manage_guild) {
+                    let guildItem = htmlToElement(`<div class="guild"><div class="guild-desc"><span style="background-image: url('${item.icon}')"></span><span>${item.name}</span></div><button class="btn btn-primary guild-button" type="button" data-guild-id="${item.id}">${item.bot_in_guild ? 'Manage Bot' : 'Invite Bot'}</button></div>`)
+                    guildItem.childNodes[1].addEventListener('click', () => {
+                        if (item.bot_in_guild) {
+                            window.location = `/dashboard/guild/${item.id}/`
+                        } else {
+                            let myWindow = window.open(`https://discord.com/oauth2/authorize?client_id=715047504126804000&scope=bot&permissions=273472&guild_id=${item.id}&redirect_uri=${inviteCallback}&response_type=code`, 'triviabotinviteguild', "width=380,height=600,location=no,toolbar=no,menubar=no,status=no")
+                        }
+                    })
+                    document.getElementById('guild-list').appendChild(guildItem)
+                }
+            });
+        }
+        makeGuilds()
+        window.addEventListener("message", (event) => {
+            if (event.data.message == "botInvite") {
+                event.source.close()
+                if (event.data.error) {
+                    console.log('User Declined')
+                } else {
+                    window.location = `/dashboard/guild/${event.data.guild_id}?new=yep`
+                }
+                console.log(event.data)
+            }
+        }, false);
+    </script>
+</body>
+
+</html>

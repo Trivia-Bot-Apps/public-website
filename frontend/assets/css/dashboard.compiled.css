@@ -1,0 +1,68 @@
+.page-header {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#guild-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#guild-list .guild {
+  height: 100%;
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+  background-color: transparent;
+  border-radius: 5px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s;
+}
+
+#guild-list .guild:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#guild-list .guild .guild-desc {
+  display: flex;
+  align-items: center;
+  flex-grow: 2;
+  flex-wrap: nowrap;
+  padding: 10px 10px 10px 10px;
+}
+
+#guild-list .guild .guild-desc span:nth-child(1) {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #111;
+  background-size: cover;
+}
+
+#guild-list .guild .guild-desc span:nth-child(2) {
+  display: inline-block;
+  font-size: 1.5rem;
+  height: 100%;
+  font-family: 'Cabin';
+  padding-left: 5px;
+}
+
+#guild-list .guild button {
+  width: 150px;
+  height: 70%;
+  background-color: #222;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-right: 1%;
+}
+
+#guild-list .guild button:hover {
+  background-color: #151515;
+}

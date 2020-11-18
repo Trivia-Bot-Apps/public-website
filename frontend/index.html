@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Trivia Bot Discord</title>
+    <meta property="og:title" content="Trivia Bot Discord">
+    <meta name="description" content="Customizable trivia for your server">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="star-209371.jpg">
+    <meta property="og:description" content="Invite Now!">
+    <link rel="icon" type="image/png" sizes="256x256" href="assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="assets/img/Trivia.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="assets/img/Trivia.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/features.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
+    <link rel="stylesheet" href="assets/css/leaderboard.compiled.css">
+    <link rel="stylesheet" href="assets/css/styling.compiled.css">
+<script src="https://cdn.jsdelivr.net/npm/tsparticles"></script>
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav" data-shrink="yes">
+        <div class="container"><a class="navbar-brand" href="/"><img id="navbar-img" src="assets/img/Trivia.png">Trivia Bot</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="/leaderboard">Global Leaderboard</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/dashboard">Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead">
+        <div id="hero-trans"></div>
+        <div class="intro-body">
+            <div class="container">
+                <div class="row" style="padding-top: 100px;">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 class="brand-heading">Trivia Bot</h1>
+                        <p class="intro-text">A simple and highly customizable Discord trivia bot</p>
+                        <div id="action-btns"><button class="btn btn-primary d-xl-flex justify-content-xl-center align-items-xl-center invite-btn" id="invite-btn" type="button">Invite Now</button><span></span><button class="btn btn-primary server-btn" type="button">Join Support Server</button></div>
+                        <a
+                            class="btn btn-link d-none d-print-none d-sm-none d-md-none d-lg-inline-block d-xl-inline-block btn-circle js-scroll-trigger" role="button" id="scroll-indicator" href="#" style="margin: 15px;margin-top: 127px;"><i class="fa fa-angle-down animated"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="features" class="features-blue" style="background: rgb(47,47,47);">
+        <div class="container" data-aos="fade-up" data-aos-duration="700" data-aos-offset="200" data-aos-delay="50">
+            <div class="intro">
+                <h2 class="display-3 text-center">Why us?</h2>
+                <p class="text-center">There are so many trivia bots out there. Why choose us?</p>
+            </div>
+            <div class="row features">
+                <div class="col-sm-6 col-md-4 item"><i class="fa fa-language icon"></i>
+                    <h3 class="name">Multiple Languages</h3>
+                    <p class="description">We support many different languages, including Chinese, Spanish, Swedish, and many more</p>
+                </div>
+                <div class="col-sm-6 col-md-4 item"><i class="fa fa-clock-o icon"></i>
+                    <h3 class="name">24/7 Uptime</h3>
+                    <p class="description">We make sure that Trivia Bot is always up, so you don't have to worry about it.</p>
+                </div>
+                <div class="col-sm-6 col-md-4 item"><i class="fa fa-list-alt icon"></i>
+                    <h3 class="name">Customizable</h3>
+                    <p class="description">Our bot is highly customizable, and it will be able to fit your needs perfectly. See a feature we don't have? Just fill out a form and we will implement it as fast as we can</p>
+                </div>
+                <div class="col-sm-6 col-md-4 item"><i class="fa fa-money icon"></i>
+                    <h3 class="name">No monetization</h3>
+                    <p class="description">We don't care about making money. There are no ads, no paid services, no gotchu's. It's all for free.</p>
+                </div>
+                <div class="col-sm-6 col-md-4 item"><i class="fas fa-bolt icon"></i>
+                    <h3 class="name">It's Fast</h3>
+                    <p class="description">Our bot runs on a very fast server, and you can expect our latency to be less than 30ms.</p>
+                </div>
+                <div class="col-sm-6 col-md-4 item"><i class="fa fa-user icon"></i>
+                    <h3 class="name">User Centered</h3>
+                    <p class="description">This bot is centered around our users. We have a support team that is on 27/7, and if you don't like anything about the bot, we ask you to tell us how we can improve it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="highlight-blue">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">What Are you waiting for?</h2>
+                <p class="text-center"></p>
+            </div>
+            <div class="buttons"><a class="btn btn-primary invite-btn" role="button" href="">Invite Now</a></div>
+        </div>
+    </div>
+    <footer>
+        <div class="container text-center">
+            <p id="copyright">Copyright © Wickedtree Development &amp; KD7T Enterprises 2020</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

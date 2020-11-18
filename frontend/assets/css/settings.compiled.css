@@ -1,0 +1,66 @@
+label {
+  font-family: 'Cabin';
+}
+
+input[type="text"] {
+  background: #222;
+  padding: 5px;
+  color: white;
+  border: none;
+  border-radius: 2px;
+}
+
+input[type="text"]:focus {
+  outline: none !important;
+}
+
+.btn-dropdown {
+  width: 100%;
+  background: #222;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.btn-dropdown:hover {
+  background-color: #111;
+  color: white;
+}
+
+.btn-dropdown:active {
+  background-color: #111 !important;
+  box-shadow: none;
+}
+
+.btn-dropdown:active:focus {
+  background-color: #111 !important;
+  box-shadow: none;
+}
+
+.btn-dropdown:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-menu {
+  background-color: #222;
+  width: 100%;
+}
+
+.dropdown-menu .dropdown-item {
+  color: white;
+  font-family: 'Cabin';
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #444;
+}
+
+.form-select {
+  background-color: #222;
+  width: 100%;
+  border: none;
+  color: white;
+  font-family: 'cabin';
+}
+
