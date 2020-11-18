@@ -1,0 +1,9 @@
+discord.py
+asyncio
+aiohttp
+aiohttp_session
+aiohttp_session[secure]
+cryptography
+redis
+aiohttp-jinja2
+jinja2
